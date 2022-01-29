@@ -33,7 +33,9 @@ https://api.github.com/repos/vmware/clarity/commits
 
 Run application & below mention all 3 API needs to enter in web-browser 1 by 1
 
-
+List API
 http://localhost:8080/listrepodetails
+Repo Details API
 http://localhost:8080/repodetails
+Commit Details API
 http://localhost:8080/commitdetails
