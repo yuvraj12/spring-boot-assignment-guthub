@@ -1,5 +1,5 @@
-**I have handled only 2 scenarios for API RESPONSE & due to time constraints  didn't complete the Caching of the results, Integration tests if you allow more time I can complete both points **  
-Reason: I was working on relase over the weekend therefore didnt get much time
+**I have handled only 2 scenarios for API RESPONSE & due to time constraints  didn't complete the Caching of the results, Integration tests if you allow more time I can complete both points.  
+Reason: I was working on relase over the weekend therefore didnt get much time**
 1) Success Scenario for 200 status code
 2) Failure/Error scenario where handled only comman type JSON message
 other way is to handle mutiple http status code with multiple scenarios
