@@ -1,4 +1,5 @@
 **Summary completed all 3 API with with unit test cases & Error handling**
+
 **I have handled only 2 scenarios for API RESPONSE & due to time constraints  didn't complete the Caching of the results, Integration tests if you allow more time I can complete both points.  
 Reason: I was working on relase over the weekend therefore didnt get much time**
 1) Success Scenario for 200 status code
