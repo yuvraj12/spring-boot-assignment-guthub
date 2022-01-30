@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.cache.CacheManager;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,17 +19,25 @@ import static org.hamcrest.Matchers.*;
 @RunWith(SpringRunner.class)
 @WebMvcTest(TestController.class)
 public class TestControllerTest {
-	
+	public static String REPO_RECORD_1 ="REPO_RECORD_1";
+	public static String COMMIT_RECORD ="Commit record";
+
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
 	private TestController testcontroller;
-	
-	
+		
+	@Autowired private CacheManager cacheManager; 
+
+	public void evictAllCaches(){ 
+	    for(String name : cacheManager.getCacheNames()){
+	        cacheManager.getCache(name).clear(); 
+	    } 
+	}
 	@Test
 	public void getlistRepoTest() throws Exception {
-	    List<String> records = new ArrayList<String>();//(Arrays.asList("RECORD_1", "RECORD_2", "RECORD_3")); 
+	    List<String> records = new ArrayList<String>();
 	    records.add("RECORD_1");
 	    records.add("RECORD_2");
 	    records.add("RECORD_3");
@@ -39,25 +48,21 @@ public class TestControllerTest {
 	    .contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
 		.andExpect(jsonPath("$", hasSize(3)));
-//		.andExpect(jsonPath("$[0]", is("RECORD_1")));
 	}
 
 	@Test
 	public void getRepoDetailsTest() throws Exception {
-	    String records  = "RECORD_1";
-	    Mockito.when(testcontroller.repodetails()).thenReturn(records);
+	    Mockito.when(testcontroller.repodetails()).thenReturn(REPO_RECORD_1);
 	    this.mockMvc.perform(MockMvcRequestBuilders.get("/repodetails"))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("RECORD_1")));
+        .andExpect(content().string(containsString(REPO_RECORD_1)));
 	}
 	
 	@Test
 	public void getCoomitDetailsTest() throws Exception {
-	    String records  = "Commit record";
-	    records = "Commit Record2";
-	    Mockito.when(testcontroller.commitdetails()).thenReturn(records);
+	    Mockito.when(testcontroller.commitdetails()).thenReturn(COMMIT_RECORD);
 	    this.mockMvc.perform(MockMvcRequestBuilders.get("/commitdetails"))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("Commit Record2")));
+        .andExpect(content().string(containsString(COMMIT_RECORD)));
 	}
 }
