@@ -1,3 +1,11 @@
+**Due to time constrant, I have handled only 2 scenarios for API RESPONSE & didn't complete the Caching of the results, Integration tests  
+1) Success Scenario for 200 status code
+2) Failure/Error scenario where handled only comman type JSON message
+other way is to handle mutiple http status code with multiple scenarios
+like 200, 201, 202, 400, 403, 404, 500 etc
+
+
+
 How to execeute the application
 
 1) Download zip application from https://github.com/yuvraj12/spring-boot-assignment-guthub
@@ -28,11 +36,7 @@ GET /repos/{owner}/{repo}/commits
 
 https://api.github.com/repos/vmware/clarity/commits
 ==============================================================
-Due to time constrant, I have handled only 2 scenarios for API RESPONSE 
-1) Success Scenario for 200 status code
-2) Failure/Error scenario where handled only comman type JSON message
-other way is to handle mutiple http status code with multiple scenarios
-like 200, 201, 202, 400, 403, 404, 500 etc
+
 
 Run application & below mention all 3 API needs to enter in web-browser 1 by 1
 
@@ -59,6 +63,7 @@ Unsuccessfull Response
 }
 
 ==========================================================
+
 2) Paste below URL in we browser
 http://localhost:8080/repodetails
 
@@ -80,6 +85,7 @@ Unsuccessfull Response
 }
 
 ===============================================================
+
 3) Paste below URL in we browser
 
 http://localhost:8080/commitdetails
